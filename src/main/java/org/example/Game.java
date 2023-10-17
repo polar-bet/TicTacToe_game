@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.FileWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class Game {
         while (status != 0) {
             switch (status) {
                 case 1 -> start();
-                case 2 -> System.out.println("Поки що в розробці");
+                case 2 -> Stats.printStats();
             }
             status = menu.menu();
         }
@@ -86,13 +87,5 @@ public class Game {
             winner = CheckWinner.check(Board.getBoard());
         }
         return winner;
-    }
-
-    public void setTurn(String turn) {
-        this.turn = turn;
-    }
-
-    public String getTurn() {
-        return turn;
     }
 }

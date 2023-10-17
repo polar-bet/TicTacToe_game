@@ -16,13 +16,13 @@ public class Menu {
 
         System.out.println(BORDER_COLOR + "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
         System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" + RESET);
-        System.out.println(X_COLOR + "▀▀          ▀▀  " + RESET + O_COLOR + "     ▀▀▀▀▀▀▀▀▀" + RESET);
-        System.out.println(X_COLOR + " ▀▀        ▀▀   " + RESET + O_COLOR + "   ▀▀         ▀▀" + RESET);
-        System.out.println(X_COLOR + "   ▀▀    ▀▀     " + RESET + O_COLOR + "   ▀▀         ▀▀" + RESET);
-        System.out.println(X_COLOR + "     ▀▀▀▀       " + RESET + O_COLOR + "   ▀▀         ▀▀" + RESET);
-        System.out.println(X_COLOR + "   ▀▀    ▀▀     " + RESET + O_COLOR + "   ▀▀         ▀▀" + RESET);
-        System.out.println(X_COLOR + " ▀▀        ▀▀   " + RESET + O_COLOR + "   ▀▀         ▀▀" + RESET);
-        System.out.println(X_COLOR + "▀▀          ▀▀  " + RESET + O_COLOR + "     ▀▀▀▀▀▀▀▀▀" + RESET);
+        System.out.println(X_COLOR + "▀▀          ▀▀  " + RESET + O_COLOR + "   ▀▀▀▀▀▀▀▀▀" + RESET);
+        System.out.println(X_COLOR + " ▀▀        ▀▀   " + RESET + O_COLOR + " ▀▀         ▀▀" + RESET);
+        System.out.println(X_COLOR + "   ▀▀    ▀▀     " + RESET + O_COLOR + " ▀▀         ▀▀" + RESET);
+        System.out.println(X_COLOR + "     ▀▀▀▀       " + RESET + O_COLOR + " ▀▀         ▀▀" + RESET);
+        System.out.println(X_COLOR + "   ▀▀    ▀▀     " + RESET + O_COLOR + " ▀▀         ▀▀" + RESET);
+        System.out.println(X_COLOR + " ▀▀        ▀▀   " + RESET + O_COLOR + " ▀▀         ▀▀" + RESET);
+        System.out.println(X_COLOR + "▀▀          ▀▀  " + RESET + O_COLOR + "   ▀▀▀▀▀▀▀▀▀" + RESET);
         System.out.println(BORDER_COLOR + "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
         System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
         System.out.println("1 - Грати");
