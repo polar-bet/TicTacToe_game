@@ -16,14 +16,23 @@ public class Game {
     public Game() {
     }
 
-    public void game(){
-
+    public void game() {
+        Menu menu = new Menu();
+        int status = menu.menu();
+        while (status != 0) {
+            switch (status) {
+                case 1 -> start();
+                case 2 -> System.out.println("Поки що в розробці");
+            }
+            status = menu.menu();
+        }
     }
 
     public void start() {
+        String[] board = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        Board.setBoard(board);
         turn = X_SIGN;
         String winner = null;
-        System.out.println("Ласкаво просимо до хрестиків ноликів (3 х 3).");
         Board.printBoard();
         System.out.println(X_SIGN + " ходить першим. Введіть значення клітинки щоб поставити " + X_SIGN + ":");
         while (winner == null) {

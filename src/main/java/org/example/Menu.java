@@ -25,7 +25,7 @@ public class Menu {
         System.out.println(X_COLOR + "▀▀          ▀▀  " + RESET + O_COLOR + "     ▀▀▀▀▀▀▀▀▀" + RESET);
         System.out.println(BORDER_COLOR + "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
         System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
-        System.out.println("1 - Зіграти знову");
+        System.out.println("1 - Грати");
         System.out.println("2 - Історія матчів");
         System.out.println("0 - Вихід");
         System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" + RESET);
