@@ -6,12 +6,19 @@ import java.util.Scanner;
 public class Game {
     private String turn;
 
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RESET = "\u001B[0m";
     final static String X_SIGN = "x";
     final static String O_SIGN = "○";
 
     public Game() {
     }
 
+    public void game(){
+
+    }
 
     public void start() {
         turn = X_SIGN;

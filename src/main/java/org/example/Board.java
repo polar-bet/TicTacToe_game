@@ -1,9 +1,7 @@
 package org.example;
 
 public class Board {
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_RESET = "\u001B[0m";
+
     private static String[] board = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 
@@ -11,8 +9,8 @@ public class Board {
         String[] boardOutput = new String[9];
         for (int i = 0; i < board.length; i++) {
             switch (board[i]) {
-                case Game.X_SIGN -> boardOutput[i] = ANSI_BLUE + board[i] + ANSI_RESET;
-                case Game.O_SIGN -> boardOutput[i] = ANSI_RED + board[i] + ANSI_RESET;
+                case Game.X_SIGN -> boardOutput[i] = Game.ANSI_BLUE + board[i] + Game.ANSI_RESET;
+                case Game.O_SIGN -> boardOutput[i] = Game.ANSI_RED + board[i] + Game.ANSI_RESET;
                 default -> boardOutput[i] = board[i];
             }
         }
