@@ -1,6 +1,13 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Menu {
+
+    public int menu(){
+        printMenu();
+        return choice();
+    }
     public void printMenu(){
         final String X_COLOR = Game.ANSI_BLUE;
         final String O_COLOR = Game.ANSI_RED;
@@ -24,7 +31,19 @@ public class Menu {
         System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" + RESET);
     }
 
-    public void menu(){
-
+    public int choice(){
+        Scanner in = new Scanner(System.in);
+        String choice = in.next();
+        switch (choice){
+            case "0", "1", "2" -> {
+                return Integer.parseInt(choice);
+            }
+            default -> {
+                System.out.println("Введено некоректне значення, спробуйте знову");
+                return choice();
+            }
+        }
     }
+
+
 }
