@@ -31,7 +31,7 @@ public class CheckWinner {
                     String.valueOf(a + 1))) {
                 break;
             } else if (a == 8) {
-                return "нічия";
+                return Game.DRAW;
             }
         }
 

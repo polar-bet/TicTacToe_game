@@ -13,6 +13,7 @@ public class Game {
     final static String X_SIGN = "x";
     final static String O_SIGN = "○";
 
+    final static String DRAW = "Нічия";
     public Game() {
     }
 
@@ -34,10 +35,15 @@ public class Game {
         turn = X_SIGN;
         String winner = null;
         Board.printBoard();
-        System.out.println(X_SIGN + " ходить першим. Введіть значення клітинки щоб поставити " + X_SIGN + ":");
+        System.out.println("«" + X_SIGN + "» ходить першим. Введіть значення клітинки щоб поставити «" + X_SIGN + "»:");
         while (winner == null) {
             winner = turn();
             turn = turn.equals(X_SIGN) ? O_SIGN : X_SIGN;
+        }
+        switch (winner){
+            case X_SIGN -> System.out.println(Game.ANSI_GREEN + "Ви перемогли!" + Game.ANSI_RESET);
+            case O_SIGN -> System.out.println(Game.ANSI_RED + "ШІ переміг \uD83E\uDD16" + Game.ANSI_RESET);
+            case DRAW -> System.out.println(Game.ANSI_BLUE + DRAW + Game.ANSI_RESET);
         }
     }
 
