@@ -85,7 +85,6 @@ public class Stats {
                 player.put("name", name);
                 player.put("score", score);
                 players.add(player);
-                System.out.println(player);
             }
 
             writeToFile(players);

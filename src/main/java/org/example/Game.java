@@ -15,6 +15,7 @@ public class Game {
     final static String O_SIGN = "○";
 
     final static String DRAW = "Нічия";
+
     public Game() {
     }
 
@@ -31,6 +32,10 @@ public class Game {
     }
 
     public void start() {
+        Player player = Player.getInstance();
+        if (player.getName().isEmpty()) {
+            player.inputName();
+        }
         String[] board = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
         Board.setBoard(board);
         turn = X_SIGN;
@@ -41,11 +46,22 @@ public class Game {
             winner = turn();
             turn = turn.equals(X_SIGN) ? O_SIGN : X_SIGN;
         }
-        switch (winner){
-            case X_SIGN -> System.out.println(Game.ANSI_GREEN + "Ви перемогли!" + Game.ANSI_RESET);
-            case O_SIGN -> System.out.println(Game.ANSI_RED + "ШІ переміг \uD83E\uDD16" + Game.ANSI_RESET);
-            case DRAW -> System.out.println(Game.ANSI_BLUE + DRAW + Game.ANSI_RESET);
+        switch (winner) {
+            case X_SIGN -> {
+                System.out.println(Game.ANSI_GREEN + "Ви перемогли!" + Game.ANSI_RESET);
+                player.setScore(2);
+            }
+            case O_SIGN -> {
+                System.out.println(Game.ANSI_RED + "ШІ переміг \uD83E\uDD16" + Game.ANSI_RESET);
+                player.setScore(0);
+            }
+            case DRAW -> {
+                System.out.println(Game.ANSI_BLUE + DRAW + Game.ANSI_RESET);
+                player.setScore(1);
+            }
         }
+
+        Stats.addStats(player.getName(), player.getScore());
     }
 
     public String turn() {
