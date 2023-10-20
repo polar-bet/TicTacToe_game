@@ -8,12 +8,8 @@ public class Player {
 
     private static Player INSTANCE;
 
-    public Player(String name, long score) {
-        this.name = name;
-        this.score = score;
-    }
+    private Player() {
 
-    public Player() {
     }
 
     public static Player getInstance() {
@@ -24,25 +20,26 @@ public class Player {
         return INSTANCE;
     }
 
-    public void inputName(){
+    public void inputName() {
         Scanner in = new Scanner(System.in);
 
         System.out.println(Game.ANSI_BLUE + "Введіть ваше ім'я (3 - 8 символів)" + Game.ANSI_RESET);
 
         try {
             String input = in.next().trim();
-            if(input.length() <= 3){
+            if (input.length() <= 3) {
                 throw new Exception("Ім'я повинно містити хоча б 3 символи");
             }
-            if(input.length() > 8){
+            if (input.length() > 8) {
                 throw new Exception("Ім'я не повинно перевищувати 8 символів");
             }
             setName(input);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(Game.ANSI_RED + e.getMessage() + Game.ANSI_RESET);
             inputName();
         }
     }
+
     public void setName(String name) {
         this.name = name;
     }

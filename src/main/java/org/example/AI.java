@@ -3,9 +3,6 @@ package org.example;
 import java.util.Objects;
 
 public class AI {
-    public AI() {
-
-    }
 
     public int getAIMove() {
         String[] cells = Board.getBoard();

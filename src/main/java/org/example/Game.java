@@ -16,16 +16,13 @@ public class Game {
 
     final static String DRAW = "Нічия";
 
-    public Game() {
-    }
-
     public void game() {
         Menu menu = new Menu();
         int status = menu.menu();
         while (status != 0) {
             switch (status) {
                 case 1 -> start();
-                case 2 -> Stats.printStats();
+                case 2 -> Stats.getInstance().printStats();
             }
             status = menu.menu();
         }
@@ -41,7 +38,7 @@ public class Game {
         turn = X_SIGN;
         String winner = null;
         Board.printBoard();
-        System.out.println("«" + X_SIGN + "» ходить першим. Введіть значення клітинки щоб поставити «" + X_SIGN + "»:");
+        System.out.println(player.getName() + " (" + X_SIGN + ") ходить першим. Введіть значення клітинки щоб поставити (" + X_SIGN + "):");
         while (winner == null) {
             winner = turn();
             turn = turn.equals(X_SIGN) ? O_SIGN : X_SIGN;
@@ -61,7 +58,7 @@ public class Game {
             }
         }
 
-        Stats.addStats(player.getName(), player.getScore());
+        Stats.getInstance().addStats(player.getName(), player.getScore());
     }
 
     public String turn() {
