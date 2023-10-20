@@ -25,6 +25,9 @@ public class Menu {
         System.out.println(X_COLOR + " ██▒       ██▒   " + RESET + O_COLOR + " ██▒        ██▒" + RESET);
         System.out.println(X_COLOR + "██▒         ██▒  " + RESET + O_COLOR + "   █████████▒" + RESET);
         System.out.println(BORDER_COLOR + "█".repeat(31) + "▒");
+        if (!player.getName().isEmpty()) {
+            System.out.printf("█ %-1s █%n", player.getName());
+        }
         System.out.println("▙ 1 - Грати");
         System.out.println("▙ 2 - Рейтинг гравців");
         if (!player.getName().isEmpty())
