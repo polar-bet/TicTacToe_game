@@ -1,14 +1,11 @@
 package org.example;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -30,23 +27,23 @@ public class Stats {
         return INSTANCE;
     }
 
+
     public void printStats() {
         final int TOP_COUNT = 10;
-        int index = 1;
         System.out.printf(Game.ANSI_BLUE + "▛----------------------------▜%n");
         System.out.printf("| %-2s | %-10s | %-8s |%n", "№", "ІМ'Я", "РАХУНОК");
         System.out.printf("------------------------------%n");
         try {
             JSONArray players = getStatsJSON();
             JSONArray playersTop = new JSONArray();
-            playersTop.addAll(players.size() > 10
+            playersTop.addAll(players.size() >= TOP_COUNT
                     ? players.subList(0, TOP_COUNT)
                     : players);
             for (Object objPlayer : playersTop) {
                 JSONObject player = (JSONObject) objPlayer;
                 String name = (String) player.get("name");
                 long score = (long) player.get("score");
-                System.out.printf("| %-2s | %-10s | %-8s |%n", index++, name, score);
+                System.out.printf("| %-2s | %-10s | %-8s |%n", players.indexOf(player) + 1, name, score);
                 if (players.indexOf(player) == playersTop.size() - 1) {
                     System.out.printf("▙----------------------------▟%n" + Game.ANSI_RESET);
                 }
@@ -114,22 +111,25 @@ public class Stats {
         return sortedJsonArray;
     }
 
+    public JSONObject getExistedPlayer(JSONArray players, String name){
+        for (Object playerObj : players) {
+            JSONObject player = (JSONObject) playerObj;
+            if (player.get("name").equals(name)) {
+                return player;
+            }
+        }
+        return new JSONObject();
+    }
     public void addStats(String name, long score) {
 
-        boolean isPlayerExists = false;
-        JSONArray players = getStatsJSON(); // Initialize an empty array
+        JSONArray players = getStatsJSON();
         try {
-            for (Object playerObj : players) {
-                JSONObject player = (JSONObject) playerObj;
-                if (player.get("name").equals(name)) {
-                    isPlayerExists = true;
-                    long currentScore = Long.parseLong(player.get("score").toString());
-                    player.replace("score", currentScore + score);
-                }
-            }
+            JSONObject player = getExistedPlayer(players, name);
 
-            if (!isPlayerExists) {
-                JSONObject player = new JSONObject();
+            if (!player.isEmpty()) {
+                long currentScore = Long.parseLong(player.get("score").toString());
+                player.replace("score", currentScore + score);
+            }else {
                 player.put("name", name);
                 player.put("score", score);
                 players.add(player);
@@ -147,6 +147,7 @@ public class Stats {
             jsonObject.put("players", players);
 
             FileWriter fileWriter = new FileWriter(STATS_FILE_PATH);
+
             fileWriter.write(jsonObject.toJSONString());
             fileWriter.close();
         } catch (Exception e) {
