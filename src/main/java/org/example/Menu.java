@@ -17,13 +17,13 @@ public class Menu {
         final String RESET = Game.ANSI_RESET;
 
         System.out.println(BORDER_COLOR + "█".repeat(31) + "▒" + RESET);
-        System.out.println(X_COLOR + "██▒         ██▒  " + RESET + O_COLOR + "   █████████▒" + RESET);
-        System.out.println(X_COLOR + " ██▒       ██▒   " + RESET + O_COLOR + " ██▒        ██▒" + RESET);
-        System.out.println(X_COLOR + "   ██▒   ██▒     " + RESET + O_COLOR + " ██▒        ██▒" + RESET);
-        System.out.println(X_COLOR + "     ████▒       " + RESET + O_COLOR + " ██▒        ██▒" + RESET);
-        System.out.println(X_COLOR + "   ██▒   ██▒     " + RESET + O_COLOR + " ██▒        ██▒" + RESET);
-        System.out.println(X_COLOR + " ██▒       ██▒   " + RESET + O_COLOR + " ██▒        ██▒" + RESET);
-        System.out.println(X_COLOR + "██▒         ██▒  " + RESET + O_COLOR + "   █████████▒" + RESET);
+        System.out.println(X_COLOR + "██▒         ██▒  " + RESET + O_COLOR + "  █████████▒" + RESET);
+        System.out.println(X_COLOR + " ██▒       ██▒   " + RESET + O_COLOR + "██▒        ██▒" + RESET);
+        System.out.println(X_COLOR + "   ██▒   ██▒     " + RESET + O_COLOR + "██▒        ██▒" + RESET);
+        System.out.println(X_COLOR + "     ████▒       " + RESET + O_COLOR + "██▒        ██▒" + RESET);
+        System.out.println(X_COLOR + "   ██▒   ██▒     " + RESET + O_COLOR + "██▒        ██▒" + RESET);
+        System.out.println(X_COLOR + " ██▒       ██▒   " + RESET + O_COLOR + "██▒        ██▒" + RESET);
+        System.out.println(X_COLOR + "██▒         ██▒  " + RESET + O_COLOR + "  █████████▒" + RESET);
         System.out.println(BORDER_COLOR + "█".repeat(31) + "▒");
         if (!player.getName().isEmpty()) {
             System.out.printf("█ %-1s █%n", player.getName());

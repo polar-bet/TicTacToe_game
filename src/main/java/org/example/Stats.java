@@ -60,10 +60,15 @@ public class Stats {
     public JSONArray getStatsJSON() {
         JSONParser parser = new JSONParser();
         JSONArray players = new JSONArray();
+
         try {
+            if (!isFileExists(STATS_FILE_PATH)){
+                createEmptyFile(STATS_FILE_PATH);
+            }
+
             FileReader reader = new FileReader(STATS_FILE_PATH);
 
-            if (isFileEmpty()) {
+            if (isFileEmpty(STATS_FILE_PATH)) {
                 return players;
             }
 
@@ -79,6 +84,15 @@ public class Stats {
         return sortArray(players);
     }
 
+    public void createEmptyFile(String filePath){
+        if (!isFileExists(filePath)) {
+            try(FileWriter writer = new FileWriter(filePath)) {
+                writer.write("");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public JSONArray sortArray(JSONArray jsonArray) {
 
         JSONArray sortedJsonArray = new JSONArray();
@@ -108,8 +122,13 @@ public class Stats {
         return sortedJsonArray;
     }
 
-    public boolean isFileEmpty() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(STATS_FILE_PATH))) {
+    public boolean isFileExists(String filePath) {
+        File file = new File(filePath);
+        return file.exists();
+    }
+
+    public boolean isFileEmpty(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             return reader.readLine() == null;
         } catch (IOException e) {
             e.printStackTrace();
