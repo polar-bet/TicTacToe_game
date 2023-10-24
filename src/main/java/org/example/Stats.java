@@ -62,37 +62,29 @@ public class Stats {
         JSONArray players = new JSONArray();
 
         try {
-            if (!isFileExists(STATS_FILE_PATH)){
-                createEmptyFile(STATS_FILE_PATH);
+            File file = new File(STATS_FILE_PATH);
+
+            file.createNewFile();
+
+            if (file.length() == 0) {
+                return players;
             }
 
             FileReader reader = new FileReader(STATS_FILE_PATH);
 
-            if (isFileEmpty(STATS_FILE_PATH)) {
-                return players;
-            }
-
-            Object obj = parser.parse(reader);
+            JSONObject jsonObject = (JSONObject) parser.parse(reader);
 
             reader.close();
 
-            JSONObject jsonObject = (JSONObject) obj;
             players = (JSONArray) jsonObject.get("players");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return sortArray(players);
     }
 
-    public void createEmptyFile(String filePath){
-        if (!isFileExists(filePath)) {
-            try(FileWriter writer = new FileWriter(filePath)) {
-                writer.write("");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
     public JSONArray sortArray(JSONArray jsonArray) {
 
         JSONArray sortedJsonArray = new JSONArray();
@@ -120,20 +112,6 @@ public class Stats {
         }
 
         return sortedJsonArray;
-    }
-
-    public boolean isFileExists(String filePath) {
-        File file = new File(filePath);
-        return file.exists();
-    }
-
-    public boolean isFileEmpty(String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            return reader.readLine() == null;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false; // Handle the exception appropriately in your code
-        }
     }
 
     public void addStats(String name, long score) {
